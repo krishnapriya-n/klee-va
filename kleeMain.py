@@ -1,11 +1,13 @@
 ###### AI Assistant Klee ######
-# Klee listens to the commands given by the user and executes
-#  certain functions. Klee is mainly a conversation-based bot who
-# talks to the user enthusiastically.
 
 #### Character Klee is owned by Genshin Impact Game by Hoyoverse.
 #### Author: Krishna Priya Nimmagadda
 #### Started: June 2022
+
+# For the voice modules, install the folder into your system and change the location on:
+# class Audios as per the installation. 
+
+# Files for this code may be installed from klee-va/voices
 
 ## IMPORTS ##
 "These imports are for various module that will be used throught this code."
@@ -21,6 +23,22 @@ from playsound import playsound
 # Random module plays random voice lines. This is used in hello function.
 import random
 
+class Audios:
+    'Class Audios contains all the downloaded voices of Klee from Genshin Impact from the Genshin Impact by Hoyoverse fandom wiki:'
+    'https://genshin-impact.fandom.com/wiki/Klee'
+    'These voices are used in class Klee'
+    
+    introduce_audio = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Hello.mp3'           # for introduce()
+    hello_path = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Hellos/'                       # for hello()
+    friend_audio = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Friend.mp3'             # for friend()
+    birthday_audio = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Birthday.mp3'         # for birthday()
+    hobbies_audio = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Hobbies.mp3'           # for hobbies()
+    today_audio = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Spoils.mp3'              # for today()
+    morning_audio = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Morning.mp3'           # for wishMe()
+    afternoon_audio = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Afternoon.mp3'       # for wishMe()
+    evening_audio = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Evening.mp3'           # for wishMe()
+    night_audio = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Night.mp3'               # for wishMe()
+
 class Klee:
     'Class Klee contains all the defined functions for playing the'
     'prompted various voicelines'
@@ -30,7 +48,7 @@ class Klee:
     "such as 'who are you' or 'what are you' (ending -are you)"
 
     def introduce():
-        playsound ('C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Hello.mp3')         # saved on C drive on system (change as required)
+        playsound (Audios.introduce_audio)
 
     ## HELLO FUNCTION ##
     "Hello function is played when user prompts by saying statements"
@@ -38,11 +56,10 @@ class Klee:
     "randomly. We use the random module here."
 
     def hello():
-        path = 'C:/Users/lenovo/Desktop/Klee VA/Voices/Hellos/'                     # saved on C drive on system (change as required)
-        files = os.listdir(path)
+        files = os.listdir(Audios.hello_path)
         try:
             rand = random.choice(files)
-            playsound('C:/Users/lenovo/Desktop/Klee VA/Voices/Hellos/' + rand)      # saved on C drive on system (change as required)
+            playsound(Audios.hello_path + rand)
         
         except Exception as e:
             print(e) # error returned
@@ -52,28 +69,28 @@ class Klee:
     "such as 'who is your friend' (contains 'friend' in statement)"
 
     def friend():
-        playsound ('C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Friend.mp3')        # saved on C drive on system (change as required)
+        playsound (Audios.friend_audio)
 
     ## BIRTHDAY FUNCTION ##
     "Birthday function is played when user prompts by saying statements"
     "such as 'It's my birthday' (contains 'birthday' in statement)"
 
     def birthday():
-        playsound ('C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Birthday.mp3')      # saved on C drive on system (change as required)
+        playsound (Audios.birthday_audio)
 
     ## HOBBIES FUNCTION ##
     "Hobbies function is played when user prompts by saying statements"
     "such as 'What are your hobbies?' (contains 'hobby'/ 'hobbies'/ 'like' in statement)"
 
     def hobbies():
-        playsound ('C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Hobbies.mp3')       # saved on C drive on system (change as required)
+        playsound (Audios.hobbies_audio)
 
     ## ACTIVITIES FUNCTION ##
     "Activited function is played when user prompts by saying statements"
     "such as 'What did you do today?' (contains 'did you do' in statement)"
     
     def today():
-        playsound ('C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Spoils.mp3')        # saved on C drive on system (change as required)
+        playsound (Audios.today_audio)
 
     ## WISHING THE USER FUNCTION ##
     "Activated when user prompts word 'good' in sentence"
@@ -82,13 +99,13 @@ class Klee:
     def wishMe():
         hour = int(datetime.datetime.now().hour)
         if hour >= 0 and hour < 12:
-            playsound ('C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Morning.mp3')   # saved on C drive on system (change as required)
+            playsound (Audios.morning_audio)
         elif hour >= 12 and hour < 15:
-            playsound ('C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Afternoon.mp3') # saved on C drive on system (change as required)
+            playsound (Audios.afternoon_audio)
         elif hour >= 15 and hour < 19:
-            playsound ('C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Evening.mp3')   # saved on C drive on system (change as required)
+            playsound (Audios.evening_audio)
         else:
-            playsound ('C:/Users/lenovo/Desktop/Klee VA/Voices/Klee_Night.mp3')     # saved on C drive on system (change as required)
+            playsound (Audios.night_audio)
 
     ## INPUT FROM MICROPHONE ##   
     """It takes microphone input from the user and returns string output"""
